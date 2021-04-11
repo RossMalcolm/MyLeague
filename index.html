@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+      
+        <title>MyLeague</title>
+        <meta name="description" content="MyLeague">
+        <meta charset="UTF-8">
+      
+        <link rel="stylesheet" href="css/styles.css?v=1.0">
+      </head>
+      <script>
+          $.ajax({
+            url: "https://cp465-my-league.herokuapp.com/api/leagues",  
+            type: "POST",
+            data:
+            success:function(result){
+            var data = JSON.parse(result);
+        
+ 
+    },
+    error:function(xhr, status, error) {
+        // var errorMessage = xhr.status + ': ' + xhr.statusText
+        // alert('Error - ' + errorMessage);
+    }
+});
+      </script>
+
+<body>
+    <nav>
+        <a class = "active" href="#">Home</a> |
+        <a href="#">Leaderboard</a> |
+        <a href="#">Statistics</a> |
+        <a href="#">Schedule</a>
+        <a hred="#">Manage</a>
+        <a href="#">Login</a>
+    </nav>
+    <table>
+        <th>Leagues</th>
+    </table>
+</body>
+</html>

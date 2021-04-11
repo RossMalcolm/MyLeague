@@ -7,7 +7,7 @@
         <meta name="description" content="MyLeague">
         <meta charset="UTF-8">
       
-        <link rel="stylesheet" href="css/styles.css?v=1.0">
+        <link rel="stylesheet" href="mystyle.css">
       </head>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script>
@@ -29,18 +29,18 @@
           }    
       </script>
 
-<body onload="getLeagues()">
-    <nav>
-        <a class = "active" href="#">Home</a> 
-        <a href="#">Leaderboard</a> 
-        <a href="#">Statistics</a> 
-        <a href="#">Schedule</a> 
-        <a href="#">Manage</a>
-        <a href="#">Login</a>
-    </nav>
+<body>
+    <ul>
+        <li><a class = "active" href="#">Home</a></li>
+        <li><a href="#">Leaderboard</a></li>
+        <li><a href="#">Statistics</a></li>
+        <li><a href="#">Schedule</a></li>
+        <li><a href="#">Manage</a></li>
+        <li style="float:right"><a href="#">Login</a></li>
+    </ul>
     <table id ="leagueTable">
+        <th>Leagues</th>
         <tr><th>Leagues</th></tr>
-        
     </table>
 </body>
 </html>

@@ -7,13 +7,12 @@
         <meta name="description" content="MyLeague">
         <meta charset="UTF-8">
       
-        <link rel="stylesheet" href="css/styles.css?v=1.0">
+        <link rel="stylesheet" href="mystyle.css">
       </head>
       <script>
           $.ajax({
-            url: "https://cp465-my-league.herokuapp.com/api/leagues",  
+            url: "https://cp465-my-league.herokuapp.com/api/leagues",
             type: "POST",
-            data:
             success:function(result){
             var data = JSON.parse(result);
         
@@ -27,14 +26,14 @@
       </script>
 
 <body>
-    <nav>
-        <a class = "active" href="#">Home</a> |
-        <a href="#">Leaderboard</a> |
-        <a href="#">Statistics</a> |
-        <a href="#">Schedule</a>
-        <a hred="#">Manage</a>
-        <a href="#">Login</a>
-    </nav>
+    <ul>
+        <li><a class = "active" href="#">Home</a></li>
+        <li><a href="#">Leaderboard</a></li>
+        <li><a href="#">Statistics</a></li>
+        <li><a href="#">Schedule</a></li>
+        <li><a href="#">Manage</a></li>
+        <li style="float:right"><a href="#">Login</a></li>
+    </ul>
     <table>
         <th>Leagues</th>
     </table>

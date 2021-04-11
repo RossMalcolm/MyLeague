@@ -1,73 +1,73 @@
 body {
-    background-image: url("images/Background3.jpg");
-    background-repeat: no-repeat, repeat;
-    background-color: #cccccc;
-    background-size: cover;
-   }
+  background-image: url("images/Background3.jpg");
+  background-repeat: no-repeat, repeat;
+  background-color: #cccccc;
+  background-size: cover;
+ }
 
 #leagueTable{
-    background-color: white;
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  background-color: white;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 #leagueTable thead tr{
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
 }
 
 #leagueTable th,
 #leagueTable td{
-    padding: 12px 15px;
+  padding: 12px 15px;
 }
 
 #leagueTable tbody tr{
-    border-bottom: thin solid #dddddd;
+  border-bottom: thin solid #dddddd;
 }
 
 #leagueTable tbody tr:nth-of-type(even){
-    background-color: #f3f3f3;
+  background-color: #f3f3f3;
 }
 
 #leagueTable tbody tr:last-of-type{
-    border-bottom: 2px solid #009879;
+  border-bottom: 2px solid #009879;
 }
 
 #leagueTable tbody tr.active-row{
-    font-weight: bold;
-    color: #009879
+  font-weight: bold;
+  color: #009879
 }
-    
-    
-    
+  
+  
+  
 
 
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-  }
-  
-  li {
-    float: left;
-  }
-  
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  /* Change the link color to #111 (black) on hover */
-  li a:hover {
-    background-color: #111;
-  }
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}

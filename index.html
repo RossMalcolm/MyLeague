@@ -15,9 +15,22 @@
             url: "https://cp465-my-league.herokuapp.com/api/leagues",  
             type: "GET",
             success:function(result){
-                var data = JSON.parse(result);       
+                var data = JSON.parse(result);     
                 for (i in data){
-                    $('#leagueTable tr:last').after('<tr><td>'+data[i].name+'</td></tr>');
+                    var row = data[i]
+                    var leagueRow = document.createElement('tr');
+                    leagueRow.style.cursor = 'pointer';
+
+                    var createClickHandler = function(rowParam) {
+                        return function() {
+                        sessionStorage.setItem('leagueID', rowParam.LeagueID);
+                        window.location.replace("../html/leaderboard.html");
+                        };
+                    };
+                    leagueRow.innerHTML="<td>"+row.name+"</td>";
+                    console.log(leagueRow);
+                    leagueRow.onclick = createClickHandler(row);
+                    $('#leagueTable tr:last').after(leagueRow);
                 }
                 },
             error:function(xhr, status, error) {

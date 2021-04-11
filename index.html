@@ -9,34 +9,38 @@
       
         <link rel="stylesheet" href="css/styles.css?v=1.0">
       </head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script>
-          $.ajax({
+          function getLeagues(){
+            $.ajax({
             url: "https://cp465-my-league.herokuapp.com/api/leagues",  
-            type: "POST",
-            data:
+            type: "GET",
             success:function(result){
-            var data = JSON.parse(result);
-        
- 
-    },
-    error:function(xhr, status, error) {
-        // var errorMessage = xhr.status + ': ' + xhr.statusText
-        // alert('Error - ' + errorMessage);
-    }
-});
+                var data = JSON.parse(result);       
+                for (i in data){
+                    $('#leagueTable tr:last').after('<tr><td>'+data[i].name+'</td></tr>');
+                }
+                },
+            error:function(xhr, status, error) {
+                var errorMessage = xhr.status + ': ' + xhr.statusText
+                alert('Error - ' + errorMessage);
+             }
+            });
+          }    
       </script>
 
-<body>
+<body onload="getLeagues()">
     <nav>
-        <a class = "active" href="#">Home</a> |
-        <a href="#">Leaderboard</a> |
-        <a href="#">Statistics</a> |
-        <a href="#">Schedule</a>
-        <a hred="#">Manage</a>
+        <a class = "active" href="#">Home</a> 
+        <a href="#">Leaderboard</a> 
+        <a href="#">Statistics</a> 
+        <a href="#">Schedule</a> 
+        <a href="#">Manage</a>
         <a href="#">Login</a>
     </nav>
-    <table>
-        <th>Leagues</th>
+    <table id ="leagueTable">
+        <tr><th>Leagues</th></tr>
+        
     </table>
 </body>
 </html>

@@ -26,6 +26,11 @@ body {
     padding: 12px 15px;
 }
 
+#leagueTable th{
+    background-color: #333;
+    color: white;
+}
+
 #leagueTable tbody tr{
     border-bottom: thin solid #dddddd;
 }
@@ -35,12 +40,12 @@ body {
 }
 
 #leagueTable tbody tr:last-of-type{
-    border-bottom: 2px solid #009879;
+    border-bottom: 2px solid #333;
 }
 
 #leagueTable tbody tr.active-row{
     font-weight: bold;
-    color: #009879
+    color: #111;
 }
     
     
@@ -62,6 +67,7 @@ ul {
   li a {
     display: block;
     color: white;
+    font-family: sans-serif;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;

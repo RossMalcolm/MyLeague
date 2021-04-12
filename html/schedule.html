@@ -7,41 +7,41 @@
         <link rel="stylesheet" href="mystyle.css">
     </head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script>
-        var leagueNames = sessionStorage.getItem("teamNames");
-        var id = sessionStorage.getItem("leagueID")
-        $.ajax({//&upcomming=true
-        url: "https://cp465-my-league.herokuapp.com/api/schedule?league_id="+id+"",  
-        type: "GET",
-        success:function(result){
-            var data = JSON.parse(result);     
-            console.log(data);
-            for (i in data){
-                var row = data[i]
-                var leagueRow = document.createElement('tr');
+    <script>
+    var leagueNames = JSON.parse(sessionStorage.getItem("teamNames"));
+    var id = sessionStorage.getItem("leagueID");
+    $.ajax({
+    url: "https://cp465-my-league.herokuapp.com/api/schedule?league_id="+id+"",  
+    type: "GET",
+    success:function(result){
+        var data = JSON.parse(result);     
+        console.log(data);
+        for (i in data){
+            var row = data[i]
+            var leagueRow = document.createElement('tr');
 
-                leagueRow.innerHTML+=("<td>"+leagueNames[row.home_team_id - 1]+"</td>");
-                leagueRow.innerHTML+=("<td>"+leagueNames[row.away_team_id - 1]+"</td>");
-                leagueRow.innerHTML+=("<td>"+row.date+"</td>");
-                
-                console.log(leagueRow);
-                $('#leagueTable tr:last').after(leagueRow);
-            }
-            },
-        error:function(xhr, status, error) {
-            var errorMessage = xhr.status + ': ' + xhr.statusText
-            alert('Error - ' + errorMessage);
-            }
-        });
-              
-      </script>
+            leagueRow.innerHTML+=("<td>"+row.date+"</td>");
+            leagueRow.innerHTML+=("<td>"+leagueNames[row.home_team_id]+"</td>");
+            leagueRow.innerHTML+=("<td>"+leagueNames[row.away_team_id - 1]+"</td>");
+            
+            console.log(leagueRow);
+            $('#leagueTable tr:last').after(leagueRow);
+        }
+        },
+    error:function(xhr, status, error) {
+        var errorMessage = xhr.status + ': ' + xhr.statusText
+        alert('Error - ' + errorMessage);
+        }
+    });
+            
+    </script>
     <body>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="leaderboard.html">Leaderboard</a></li>
             <li><a href="statistics.html">Statistics</a></li>
             <li><a class = "active" href="schedule.html">Schedule</a></li>
-            <li><a href="#">Manage</a></li>
+            <li><a href="manage.html">Manage</a></li>
             <li style="float:right"><a href="#">Login</a></li>
         </ul>
         <table id ="leagueTable">

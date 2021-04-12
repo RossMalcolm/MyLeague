@@ -47,6 +47,10 @@ body {
     font-weight: bold;
     color: #111;
 }
+
+#leagueTable tr:hover{
+    background-color: #f3f3f3;
+}
   
   
   li a {

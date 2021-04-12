@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+      
+        <title>MyLeague</title>
+        <meta name="description" content="MyLeague">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="mystyle.css">
+      </head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script>
+          
+        $.ajax({
+        url: "https://cp465-my-league.herokuapp.com/api/leagues",  
+        type: "GET",
+        success:function(result){
+            var data = JSON.parse(result);     
+            console.log(data);
+            for (i in data){
+                var row = data[i]
+                var leagueRow = document.createElement('tr');
+                leagueRow.style.cursor = 'pointer';
+
+                var createClickHandler = function(rowParam) {
+                    return function() {
+                        sessionStorage.setItem('leagueID', rowParam.league_id);
+                        window.location.replace("./leaderboard.html");
+                    };
+                };
+                leagueRow.innerHTML="<td>"+row.name+"</td>";
+                console.log(leagueRow);
+                leagueRow.onclick = createClickHandler(row);
+                $('#leagueTable tr:last').after(leagueRow);
+            }
+            },
+        error:function(xhr, status, error) {
+            var errorMessage = xhr.status + ': ' + xhr.statusText
+            alert('Error - ' + errorMessage);
+            }
+        });
+              
+      </script>
+
+<body>
+    <ul>
+        <li><a class = "active" href="index.html">Home</a></li>
+        <li><a href="leaderboard.html">Leaderboard</a></li>
+        <li><a href="statistics.html">Statistics</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="#">Manage</a></li>
+        <li style="float:right"><a href="#">Login</a></li>
+    </ul>
+    <table id ="leagueTable">
+        <tr><th>Leagues</th></tr>
+    </table>
+</body>
+</html>

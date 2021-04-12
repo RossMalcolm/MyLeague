@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>MyLeague</title>
+        <meta name="description" content="MyLeague">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="mystyle.css">
+    </head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script>
+        var id = sessionStorage.getItem("leagueID")
+        $.ajax({
+        url: "https://cp465-my-league.herokuapp.com/api/stats?league_id="+id,  
+        type: "GET",
+        success:function(result){
+            var data = JSON.parse(result);     
+            console.log(data);
+            for (i in data){
+                var row = data[i]
+                var leagueRow = document.createElement('tr');
+
+                var createClickHandler = function(rowParam) {
+                    return function() {
+                        sessionStorage.setItem('leagueID', rowParam.league_id);
+                        window.location.replace("./leaderboard.html");
+                    };
+                };
+                leagueRow.innerHTML+=("<td>"+row.team_name+"</td>");
+                leagueRow.innerHTML+=("<td>"+row.games+"</td>");
+                leagueRow.innerHTML+=("<td>"+row.win_percentage+"</td>");
+                leagueRow.innerHTML+=("<td>"+row.avg_goals_scored_per_game+"</td>");
+                leagueRow.innerHTML+=("<td>"+row.avg_goals_conceded_per_game+"</td>");
+                leagueRow.innerHTML+=("<td>"+row.goals_scored+"</td>");
+                leagueRow.innerHTML+=("<td>"+row.home_goals_scored+"</td>");
+                leagueRow.innerHTML+=("<td>"+row.away_goals_scored+"</td>");
+                leagueRow.innerHTML+=("<td>"+row.goals_conceded+"</td>");
+                leagueRow.innerHTML+=("<td>"+row.home_goals_conceded+"</td>");
+                leagueRow.innerHTML+=("<td>"+row.away_goals_conceded+"</td>");
+                console.log(leagueRow);
+                leagueRow.onclick = createClickHandler(row);
+                $('#leagueTable tr:last').after(leagueRow);
+            }
+            },
+        error:function(xhr, status, error) {
+            var errorMessage = xhr.status + ': ' + xhr.statusText
+            alert('Error - ' + errorMessage);
+            }
+        });
+              
+      </script>
+    <body>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="leaderboard.html">Leaderboard</a></li>
+            <li><a class = "active" href="statistics.html">Statistics</a></li>
+            <li><a href="schedule.html">Schedule </a></li>
+            <li><a href="manage.html">Manage</a></li>
+            <li style="float:right"><a href="#">Login</a></li>
+        </ul>
+        <table id ="leagueTable">
+            <tr>
+                <th>Team Name</th>
+                <th>Games</th>
+                <th>Win %</th>
+                <th>Goals Per Game</th>
+                <th>Goals Against Per Game</th>
+                <th>Total goals</th>
+                <th>Home Goals Scored</th>
+                <th>Away Goals Scored</th>
+                <th>Goals Against</th>
+                <th>Home Goals Against</th>
+                <th>Away Goals Against</th>
+            </tr>
+        </table>
+    </body>
+</html> 

@@ -1,9 +1,11 @@
 body {
-  background-image: url("images/Background3.jpg");
+  background-image: url("../images/Background3.jpg");
   background-repeat: no-repeat, repeat;
   background-color: #cccccc;
   background-size: cover;
  }
+
+ 
 
 #leagueTable{
   background-color: white;

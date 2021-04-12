@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>MyLeague</title>
+        <meta name="description" content="MyLeague">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="mystyle.css">
+    </head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.js"></script>
+
+    <script>
+        function populateDropDowns(){
+            var homeDropDown = document.getElementById("homeTeam");
+            var awayDropDown = document.getElementById("awayTeam");
+            var leagueNames = JSON.parse(sessionStorage.getItem("teamNames"));
+            for (i in leagueNames){
+                console.log(i);
+                var leagueRow = document.createElement('option');
+                var leagueRow2 = document.createElement('option')
+                leagueRow.value = i;
+                leagueRow2.value = i;
+                leagueRow.innerHTML = leagueNames[i];
+                leagueRow2.innerHTML = leagueNames[i];
+                homeDropDown.appendChild(leagueRow);
+                awayDropDown.appendChild(leagueRow2);
+                }
+            }
+
+        function insertmatch(){
+            var id = sessionStorage.getItem("leagueID")
+            var leagueNames = JSON.parse(sessionStorage.getItem("teamNames"));
+            // $.ajax({
+            //     url: "https://cp465-my-league.herokuapp.com/api/createGame",  
+            //     type: "POST",
+            //     data:{
+            //         "league_id": id,
+            //         "played": false,
+            //         "date": document.getElementById("datetimepicker").value,
+            //         "home_team_id": document.getElementById("homeTeam").value,
+            //         "away_team_id": document.getElementById("awayTeam").value,
+            //         "home_goals": 0,
+            //         "away_goals": 0,
+            //         "OT":false
+            //     },
+            //     success:function(result){
+            //         var data = JSON.parse(result);     
+            //         console.log(data);
+            //         },
+            //     error:function(xhr, status, error) {
+            //         var errorMessage = xhr.status + ': ' + xhr.statusText
+            //         alert('Error - ' + errorMessage);
+            //         }
+            //     });
+            }
+    </script>
+    <body onload="populateDropDowns()">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="leaderboard.html">Leaderboard</a></li>
+            <li><a href="statistics.html">Statistics</a></li>
+            <li><a href="schedule.html">Schedule </a></li>
+            <li><a class = "active" href="manage.html">Manage</a></li>
+            <li style="float:right"><a href="#">Login</a></li>
+        </ul>
+
+        <form action = "insertmatch()" id="match_insert" title="Insert New Match">
+            <label for="homeTeam">Home Team:</label>
+            <select id="homeTeam" name="homeTeam"></select>
+            <label for="awayTeam">Away Team:</label>
+            <select id="awayTeam" name="awayTeam"></select>
+            <label for="datetimepicker">Choose a date/ time</label>
+            <input id="datetimepicker" type="text"/>
+            <script>
+                jQuery('#datetimepicker').datetimepicker();
+            </script>
+        </form>
+        <button type="submit" form="match_insert" value="Submit">Submit</button>
+
+        
+        
+    </body>
+</html> 

@@ -10,13 +10,14 @@ var all_teams = []
             }),
             success:function(result){
                 var data = JSON.parse(result); 
-                sessionStorage.setItem('loggedIn', true);    
-                console.log(data);
+                sessionStorage.setItem('loggedIn', true);
+                sessionStorage.setItem("leagueID", data.league_id);
+                window.location.replace("../html/leaderboard.html");
+                window.location.replace("../html/manage.html")
+                
                 },
             error:function(xhr, status, error) {
-                var errorMessage = xhr.status + ': ' + xhr.statusText
-                alert(xhr.responseText);
-                alert('Error - ' + errorMessage);
+                alert("Could not Login");
                 }
             });
         }
@@ -27,17 +28,19 @@ var all_teams = []
             type: "POST",
             data:JSON.stringify({
                 "league_name": document.getElementById("league_name_create").value,
-                "team_names": all_teams.push(),
+                "team_names": all_teams.join(),
                 "password": document.getElementById("league_pass_create").value
             }),
             success:function(result){
-                var data = JSON.parse(result);     
-                
+                var data = JSON.parse(result);   
+                sessionStorage.setItem('loggedIn', true); 
+                sessionStorage.setItem("leagueID", data.league_id);
+                window.location.replace("../html/manage.html");
+                sessionStorage.setItem("teamNames", JSON.stringify(all_teams));
                 },
             error:function(xhr, status, error) {
-                var errorMessage = xhr.status + ': ' + xhr.statusText
-                alert(xhr.responseText);
-                alert('Error - ' + errorMessage);
+                alert("League Already Exists");
+                
                 }
             });
         }
@@ -45,6 +48,6 @@ var all_teams = []
         function addTeam(){
             var list = document.getElementById("teams_list");
             var name = document.getElementById("team_names").value;
-            all_teams.push(name)
+            all_teams.push(name);
             list.innerHTML += ("<li>"+name+"</li>");
         }

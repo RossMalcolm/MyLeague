@@ -3,7 +3,9 @@ function populateDropDowns(){
     var awayDropDown = document.getElementById("awayTeam");
     var leagueNames = JSON.parse(sessionStorage.getItem("teamNames"));
     for (i in leagueNames){
+        console.log("populating dropdowns");
         console.log(i);
+        console.log(leagueNames[i]);
         var leagueRow = document.createElement('option');
         var leagueRow2 = document.createElement('option')
         leagueRow.value = i;
@@ -85,7 +87,7 @@ success:function(result){
 
         leagueRow.innerHTML+=("<td>"+row.date+"</td>");
         leagueRow.innerHTML+=("<td>"+leagueNames[row.home_team_id]+"</td>");
-        leagueRow.innerHTML+=("<td>"+leagueNames[row.away_team_id - 1]+"</td>");
+        leagueRow.innerHTML+=("<td>"+leagueNames[row.away_team_id]+"</td>");
         if(row.home_goals == null && row.away_goals == null){
             leagueRow.innerHTML+="<td> - </td>"
         }else{

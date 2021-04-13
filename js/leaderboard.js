@@ -4,7 +4,8 @@ var id = sessionStorage.getItem("leagueID")
             url: "https://cp465-my-league.herokuapp.com/api/leaderboard?league_id=" + id,  
             type: "GET",
             success:function(result){
-                var data = JSON.parse(result);     
+                var data = JSON.parse(result);    
+                console.log(data) 
                 for (i in data){
                     var row = data[i]
                     leagueNames[row.team_id]=row.team_name;

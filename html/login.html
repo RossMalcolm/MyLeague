@@ -20,34 +20,34 @@
             <li style="float:right"><a id="logout" onclick="logout()">Logout</a></li>
         </ul>
 
-        <form id="league_login" title="Insert New Match">
+        
         <ul class="formStyle2">
             <li><h1>Login</h1></li>
             <li><label for="league_name">League Name:</label></li>
             <li><input id="league_name" name="league_name"/></li>
             <li><label for="league_pass">League Password:</label></li>
-            <li><input id="league_pass" name="league_pass"/></li>
+            <li><input id="league_pass" name="league_pass" type="password"/></li>
             <li><button onclick=login()>Login</button></li>
         </ul>
-        </form>
         
         
-        <form>
+        
+        
         <ul class="formStyle3">
             <li><label for="league_name_create" >League Name:</label></li>
             <li><input id= "league_name_create" type="text"/></li>
             <li><label for="leauge_pass_create">League Password:</label></li>
-            <li><input id="league_pass_create" type="text"/></li>
+            <li><input id="league_pass_create" type="password"/></li>
             <li><label for="team_names">Team Name:</label></li>
             <li><input id="team_names" type="text"/></li>
             <li><button onclick="addTeam()">Add Team</button></li>
             <li><button onclick="create_league()">Create League:</button></li>
         </ul>
-        </form>
+        
         
         
         <ul class="formStyle" id="teams_list">
-            <li>Team Names</i>
+            <li>Team Names:</i>
         </ul>
         
     </body>

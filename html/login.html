@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MyLeague</title>
+        <meta charset="utf-8" name="description" content="MyLeague">
+        <link rel="stylesheet" href="mystyle.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        var all_teams = []
+        function login(){
+            $.ajax({
+            url: "https://cp465-my-league.herokuapp.com/api/login",  
+            type: "POST",
+            data:JSON.stringify({
+                "league_name": document.getElementById("league_name").value,
+                "password": document.getElementById("league_pass").value
+
+            }),
+            success:function(result){
+                var data = JSON.parse(result);     
+                console.log(data);
+                },
+            error:function(xhr, status, error) {
+                var errorMessage = xhr.status + ': ' + xhr.statusText
+                alert(xhr.responseText);
+                alert('Error - ' + errorMessage);
+                }
+            });
+        }
+
+        function create_league(){
+            $.ajax({
+            url: "https://cp465-my-league.herokuapp.com/api/leagues",  
+            type: "POST",
+            data:JSON.stringify({
+                "league_name": document.getElementById("league_name_create").value,
+                "team_names": all_teams.push(),
+                "password": document.getElementById("league_pass_create").value
+            }),
+            success:function(result){
+                var data = JSON.parse(result);     
+                console.log(data);
+                },
+            error:function(xhr, status, error) {
+                var errorMessage = xhr.status + ': ' + xhr.statusText
+                alert(xhr.responseText);
+                alert('Error - ' + errorMessage);
+                }
+            });
+        }
+
+        function addTeam(){
+            var list = document.getElementById("teams_list");
+            var name = document.getElementById("team_names").value;
+            all_teams.push(name)
+            list.innerHTML += ("<li>"+name+"</li>");
+        }
+    </script>
+    </head>
+    <body>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="leaderboard.html">Leaderboard</a></li>
+            <li><a href="statistics.html">Statistics</a></li>
+            <li><a href="schedule.html">Schedule </a></li>
+            <li><a href="manage.html">Manage</a></li>
+            <li style="float:right"><a class = "active" href="login.html">Login</a></li>
+        </ul>
+
+        <form id="league_login" title="Insert New Match">
+            <h1>Login</h1>
+            <label for="league_name">League Name:</label>
+            <input id="league_name" name="league_name"/>
+            <label for="league_pass">League Password:</label>
+            <input id="league_pass" name="league_pass"/>
+        </form>
+        <button onclick=login()>Login</button>
+        
+        <form>
+            <label for="league_name_create" >League Name:</label>
+            <input id= "league_name_create" type="text"/>
+            <label for="leauge_pass_create">League Password:</label>
+            <input id="league_pass_create" type="text"/>
+            <label for="team_names">Team Name</label>
+            <input id="team_names" type="text"/>
+        </form>
+        
+        <button onclick="addTeam()">Add Team</button>
+        <button onclick="create_league()">Create League:</button>
+        <ul id="teams_list">
+            <li>Team Names</i>
+        </ul>
+        
+    </body>
+</html> 

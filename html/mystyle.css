@@ -26,6 +26,7 @@ body {
 #leagueTable th,
 #leagueTable td{
   padding: 12px 15px;
+  text-align: center;
 }
 
 #leagueTable th{
@@ -121,3 +122,50 @@ li a:hover {
 #leagueTable{
   margin: 10px auto;
 }
+
+.formStyle2 {
+  color: white;
+  font-family: sans-serif;
+  margin: 10px auto;
+	max-width: 400px;
+	padding: 50px 12px 12px 12px;
+  background-color: #800020;
+  
+}
+
+
+
+.formStyle2 h1{
+  margin: -50px 0 0 0;
+}
+
+.formStyle2 li{
+  text-align: center;
+  width: 400px;
+  padding: 5px;
+}
+
+.formStyle2 label{
+	margin: 0 0 0 0;
+	padding:0px;
+	display:block;
+}
+
+.formStyle3 {
+  color: white;
+  font-family: sans-serif;
+  margin: 10px auto;
+	max-width: 400px;
+	padding: 12px 12px 12px 12px;
+  background-color: #800020;
+  
+}
+
+.formStyle3 li{
+  text-align: center;
+  width: 400px;
+  padding: 5px;
+}
+
+
+

@@ -29,7 +29,7 @@ body {
 }
 
 #leagueTable th{
-    background-color: #333;
+    background-color: #800020;
     color: white;
 }
 
@@ -42,7 +42,7 @@ body {
 }
 
 #leagueTable tbody tr:last-of-type{
-    border-bottom: 2px solid #333;
+    border-bottom: 2px solid #800020;
 }
 
 #leagueTable tbody tr.active-row{
@@ -74,6 +74,10 @@ ul {
   background-color: #333;
 }
 
+ul li a.active{
+  background-color: #111;
+}
+
 li {
   float: left;
 }
@@ -89,4 +93,31 @@ li a {
 /* Change the link color to #111 (black) on hover */
 li a:hover {
   background-color: #111;
+}
+
+.formStyle {
+  color: white;
+  font-family: sans-serif;
+  margin: 10px auto;
+	max-width: 400px;
+	padding: 12px 12px 12px 12px;
+  background-color: #800020;
+  
+}
+
+.formStyle li{
+  padding: 0;
+	display: block;
+	list-style: none;
+	margin: 10px 5px 0 0;
+}
+
+.formStyle label{
+	margin:0 0 3px 0;
+	padding:0px;
+	display:block;
+}
+
+#leagueTable{
+  margin: 10px auto;
 }

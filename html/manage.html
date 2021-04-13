@@ -21,18 +21,22 @@
             <li style="float:right"><a href="#">Login</a></li>
         </ul>
 
-        <form action = "insertmatch()" id="match_insert" title="Insert New Match">
-            <label for="homeTeam">Home Team:</label>
-            <select id="homeTeam" name="homeTeam"></select>
-            <label for="awayTeam">Away Team:</label>
-            <select id="awayTeam" name="awayTeam"></select>
-            <label for="datetimepicker">Choose a date/ time</label>
-            <input id="datetimepicker" type="text"/>
+        <form id="match_insert" title="Insert New Match">
+        <ul class="formStyle">
+            <li><label for="homeTeam">Home Team:</label></li>
+            <li><select id="homeTeam" name="homeTeam"></select></li>
+            <li><label for="awayTeam">Away Team:</label></li>
+            <li><select id="awayTeam" name="awayTeam"></select></li>
+            <li><label for="datetimepicker">Choose a date/ time:</label></li>
+            <li><input id="datetimepicker" type="text"/></li>
+            <li><button onclick=insertmatch()>Submit</button></li>
             <script>
                 jQuery('#datetimepicker').datetimepicker();
             </script>
+        </ul>
         </form>
-        <button onclick=insertmatch()>Submit</button>
+        
+        
         <table id ="leagueTable">
             <tr>
                 <th>Date</th>
@@ -42,11 +46,13 @@
             </tr>
         </table>
         <form id= "match_update" hidden=true>
-            <label for="home_goals" >Home Team Goals:</label>
-            <input id= "home_goals" type="text"/>
-            <label for="away_goals">Away Team Goals:</label>
-            <input id = "away_goals" type="text"/>
-            <button onclick="updateScores()">Update Game</button>
+        <ul class="formStyle">
+            <li><label for="home_goals" >Home Team Goals:</label></li>
+            <li><input id= "home_goals" type="text"/></li>
+            <li><label for="away_goals">Away Team Goals:</label></li>
+            <li><input id = "away_goals" type="text"/></li>
+            <li><button onclick="updateScores()">Update Game</button></li>
+        </ul>
         </form>
         
     </body>

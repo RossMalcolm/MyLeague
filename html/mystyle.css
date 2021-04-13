@@ -29,7 +29,7 @@ body {
 }
 
 #leagueTable th{
-    background-color: #333;
+    background-color: #800020;
     color: white;
 }
 
@@ -42,7 +42,7 @@ body {
 }
 
 #leagueTable tbody tr:last-of-type{
-    border-bottom: 2px solid #333;
+    border-bottom: 2px solid #800020;
 }
 
 #leagueTable tbody tr.active-row{
@@ -101,6 +101,8 @@ li a:hover {
   margin: 10px auto;
 	max-width: 400px;
 	padding: 12px 12px 12px 12px;
+  background-color: #800020;
+  
 }
 
 .formStyle li{

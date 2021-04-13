@@ -26,6 +26,7 @@ body {
 #leagueTable th,
 #leagueTable td{
   padding: 12px 15px;
+  text-align: center;
 }
 
 #leagueTable th{

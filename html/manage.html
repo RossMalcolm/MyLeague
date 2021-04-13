@@ -10,52 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.js"></script>
-
-    <script>
-        function populateDropDowns(){
-            var homeDropDown = document.getElementById("homeTeam");
-            var awayDropDown = document.getElementById("awayTeam");
-            var leagueNames = JSON.parse(sessionStorage.getItem("teamNames"));
-            for (i in leagueNames){
-                console.log(i);
-                var leagueRow = document.createElement('option');
-                var leagueRow2 = document.createElement('option')
-                leagueRow.value = i;
-                leagueRow2.value = i;
-                leagueRow.innerHTML = leagueNames[i];
-                leagueRow2.innerHTML = leagueNames[i];
-                homeDropDown.appendChild(leagueRow);
-                awayDropDown.appendChild(leagueRow2);
-                }
-            }
-
-        function insertmatch(){
-            var id = sessionStorage.getItem("leagueID")
-            var leagueNames = JSON.parse(sessionStorage.getItem("teamNames"));
-            // $.ajax({
-            //     url: "https://cp465-my-league.herokuapp.com/api/createGame",  
-            //     type: "POST",
-            //     data:{
-            //         "league_id": id,
-            //         "played": false,
-            //         "date": document.getElementById("datetimepicker").value,
-            //         "home_team_id": document.getElementById("homeTeam").value,
-            //         "away_team_id": document.getElementById("awayTeam").value,
-            //         "home_goals": 0,
-            //         "away_goals": 0,
-            //         "OT":false
-            //     },
-            //     success:function(result){
-            //         var data = JSON.parse(result);     
-            //         console.log(data);
-            //         },
-            //     error:function(xhr, status, error) {
-            //         var errorMessage = xhr.status + ': ' + xhr.statusText
-            //         alert('Error - ' + errorMessage);
-            //         }
-            //     });
-            }
-    </script>
+    <script src="../js/manage.js"></script>
     <body onload="populateDropDowns()">
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -77,8 +32,24 @@
                 jQuery('#datetimepicker').datetimepicker();
             </script>
         </form>
-        <button type="submit" form="match_insert" value="Submit">Submit</button>
+        <button onclick=insertmatch()>Submit</button>
+        <table id ="leagueTable">
+            <tr>
+                <th>Date</th>
+                <th>Home Team</th>
+                <th>Away Team</th>
+                <th>Score</th>
+            </tr>
+        </table>
+        <form id= "match_update" hidden=true>
+            <label for="home_goals" >Home Team Goals:</label>
+            <input id= "home_goals" type="text"/>
+            <label for="away_goals">Away Team Goals:</label>
+            <input id = "away_goals" type="text"/>
+            <button onclick="updateScores()">Update Game</button>
+        </form>
 
+            
         
         
     </body>

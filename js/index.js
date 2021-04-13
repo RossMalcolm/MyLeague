@@ -10,6 +10,7 @@ $.ajax({
 
             var createClickHandler = function(rowParam) {
                 return function() {
+                    logout();
                     sessionStorage.setItem('leagueID', rowParam.league_id);
                     window.location.replace("./leaderboard.html");
                 };

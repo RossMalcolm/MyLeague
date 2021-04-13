@@ -14,7 +14,7 @@ $.ajax({
             }
         },
         error:function(xhr, status, error) {
-        var errorMessage = xhr.status + ': ' + xhr.statusText
-        alert('Error - ' + errorMessage);
+        alert("must select a league first");
+        window.location.replace("../html/index.html");
         }
     });

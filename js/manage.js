@@ -100,7 +100,8 @@ function updateScores(){
             "game_id": sessionStorage.getItem("game_id"),
             "home_goals": document.getElementById("home_goals").value,
             "away_goals": document.getElementById("away_goals").value,
-            "date": sessionStorage.getItem("game_time")
+            "date": sessionStorage.getItem("game_time"),
+            "OT": document.getElementById("OT").checked
         }),
         success:function(result){
             var data = JSON.parse(result);     

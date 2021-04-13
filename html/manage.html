@@ -67,17 +67,20 @@
         </ul>
 
         <form action = "insertmatch()" id="match_insert" title="Insert New Match">
-            <label for="homeTeam">Home Team:</label>
-            <select id="homeTeam" name="homeTeam"></select>
-            <label for="awayTeam">Away Team:</label>
-            <select id="awayTeam" name="awayTeam"></select>
-            <label for="datetimepicker">Choose a date/ time</label>
-            <input id="datetimepicker" type="text"/>
+        <ul class="formStyle">
+            <li><label for="homeTeam">Home Team:</label></li>
+            <li><select id="homeTeam" name="homeTeam"></select></li>
+            <li><label for="awayTeam">Away Team:</label></li>
+            <li><select id="awayTeam" name="awayTeam"></select></li>
+            <li><label for="datetimepicker">Choose a date/ time:</label></li>
+            <li><input id="datetimepicker" type="text"/></li>
+            <li><button type="submit" form="match_insert" value="Submit">Submit</button></li>
             <script>
                 jQuery('#datetimepicker').datetimepicker();
             </script>
+        </ul>
         </form>
-        <button type="submit" form="match_insert" value="Submit">Submit</button>
+        
 
         
         

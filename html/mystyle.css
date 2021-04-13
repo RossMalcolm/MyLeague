@@ -90,3 +90,26 @@ li a {
 li a:hover {
   background-color: #111;
 }
+
+.formStyle {
+  color: white;
+  font-family: sans-serif;
+  margin: 10px auto;
+	max-width: 400px;
+	padding: 12px 12px 12px 12px;
+}
+
+.formStyle li{
+  padding: 0;
+	display: block;
+	list-style: none;
+	margin: 10px 5px 0 0;
+}
+
+.formStyle label{
+	margin:0 0 3px 0;
+	padding:0px;
+	display:block;
+}
+
+

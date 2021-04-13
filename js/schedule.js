@@ -10,7 +10,7 @@ var leagueNames = JSON.parse(sessionStorage.getItem("teamNames"));
             var leagueRow = document.createElement('tr');
             console.log("Goals:");
             console.log(row.home_goals);
-            leagueRow.innerHTML+=("<td>"+row.date+"</td>");
+            leagueRow.innerHTML+=("<td>"+row.date.slice(0,-3)+"</td>");
             leagueRow.innerHTML+=("<td>"+leagueNames[row.home_team_id]+"</td>");
             leagueRow.innerHTML+=("<td>"+leagueNames[row.away_team_id - 1]+"</td>");
             if(row.home_goals == null && row.away_goals == null){

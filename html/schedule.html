@@ -1,21 +1,23 @@
 <html>
     <head>
-        <meta charset="utf-8">
+        
         <title>MyLeague</title>
-        <meta name="description" content="MyLeague">
-        <meta charset="UTF-8">
+        <meta charset="utf-8" name="description" content="MyLeague">
         <link rel="stylesheet" href="mystyle.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="../js/schedule.js"></script>
+        <script src="../js/helper.js"></script>
     </head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../js/schedule.js"></script>
-    <body>
+    
+    <body onload="onLoadFnc()">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="leaderboard.html">Leaderboard</a></li>
             <li><a href="statistics.html">Statistics</a></li>
             <li><a class = "active" href="schedule.html">Schedule</a></li>
-            <li><a href="manage.html">Manage</a></li>
-            <li style="float:right"><a href="#">Login</a></li>
+            <li><a id="manage" href="manage.html">Manage</a></li>
+            <li style="float:right"><a id="login" href="login.html">Login</a></li>
+            <li style="float:right"><a id="logout" onclick="logout()">Logout</a></li>
         </ul>
         <table id ="leagueTable">
             <tr>

@@ -1,24 +1,25 @@
 <html>
     <head>
-        <meta charset="utf-8">
+        
         <title>MyLeague</title>
-        <meta name="description" content="MyLeague">
-        <meta charset="UTF-8">
+        <meta charset="utf-8" name="description" content="MyLeague">
         <link rel="stylesheet" href="mystyle.css">
-    </head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.js"></script>
-    <script src="../js/manage.js"></script>
-    <body onload="populateDropDowns()">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.js"></script>
+        <script src="../js/manage.js"></script>
+        <script type="text/javascript" src="../js/helper.js"></script>
+    </head> 
+    <body onload="onLoadFnc(); populateDropDowns();">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="leaderboard.html">Leaderboard</a></li>
             <li><a href="statistics.html">Statistics</a></li>
             <li><a href="schedule.html">Schedule </a></li>
-            <li><a class = "active" href="manage.html">Manage</a></li>
-            <li style="float:right"><a href="#">Login</a></li>
+            <li><a class="active" id="manage" href="manage.html">Manage</a></li>
+            <li style="float:right"><a id="login" href="login.html">Login</a></li>
+            <li style="float:right"><a id="logout" onclick="logout()">Logout</a></li>
         </ul>
 
         <form id="match_insert" title="Insert New Match">

@@ -112,4 +112,6 @@ li a:hover {
 	display:block;
 }
 
-
+#leagueTable{
+  margin: 10px auto;
+}

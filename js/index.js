@@ -3,7 +3,6 @@ $.ajax({
     type: "GET",
     success:function(result){
         var data = JSON.parse(result);     
-        console.log(data);
         for (i in data){
             var row = data[i]
             var leagueRow = document.createElement('tr');
@@ -16,7 +15,6 @@ $.ajax({
                 };
             };
             leagueRow.innerHTML="<td>"+row.name+"</td>";
-            console.log(leagueRow);
             leagueRow.onclick = createClickHandler(row);
             $('#leagueTable tr:last').after(leagueRow);
         }

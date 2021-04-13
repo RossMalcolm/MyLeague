@@ -10,52 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.js"></script>
-
-    <script>
-        function populateDropDowns(){
-            var homeDropDown = document.getElementById("homeTeam");
-            var awayDropDown = document.getElementById("awayTeam");
-            var leagueNames = JSON.parse(sessionStorage.getItem("teamNames"));
-            for (i in leagueNames){
-                console.log(i);
-                var leagueRow = document.createElement('option');
-                var leagueRow2 = document.createElement('option')
-                leagueRow.value = i;
-                leagueRow2.value = i;
-                leagueRow.innerHTML = leagueNames[i];
-                leagueRow2.innerHTML = leagueNames[i];
-                homeDropDown.appendChild(leagueRow);
-                awayDropDown.appendChild(leagueRow2);
-                }
-            }
-
-        function insertmatch(){
-            var id = sessionStorage.getItem("leagueID")
-            var leagueNames = JSON.parse(sessionStorage.getItem("teamNames"));
-            // $.ajax({
-            //     url: "https://cp465-my-league.herokuapp.com/api/createGame",  
-            //     type: "POST",
-            //     data:{
-            //         "league_id": id,
-            //         "played": false,
-            //         "date": document.getElementById("datetimepicker").value,
-            //         "home_team_id": document.getElementById("homeTeam").value,
-            //         "away_team_id": document.getElementById("awayTeam").value,
-            //         "home_goals": 0,
-            //         "away_goals": 0,
-            //         "OT":false
-            //     },
-            //     success:function(result){
-            //         var data = JSON.parse(result);     
-            //         console.log(data);
-            //         },
-            //     error:function(xhr, status, error) {
-            //         var errorMessage = xhr.status + ': ' + xhr.statusText
-            //         alert('Error - ' + errorMessage);
-            //         }
-            //     });
-            }
-    </script>
+    <script src="../js/manage.js"></script>
     <body onload="populateDropDowns()">
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -66,7 +21,7 @@
             <li style="float:right"><a href="#">Login</a></li>
         </ul>
 
-        <form action = "insertmatch()" id="match_insert" title="Insert New Match">
+        <form id="match_insert" title="Insert New Match">
         <ul class="formStyle">
             <li><label for="homeTeam">Home Team:</label></li>
             <li><select id="homeTeam" name="homeTeam"></select></li>
@@ -74,14 +29,33 @@
             <li><select id="awayTeam" name="awayTeam"></select></li>
             <li><label for="datetimepicker">Choose a date/ time:</label></li>
             <li><input id="datetimepicker" type="text"/></li>
-            <li><button type="submit" form="match_insert" value="Submit">Submit</button></li>
+            <li><button onclick=insertmatch()>Submit</button></li>
             <script>
                 jQuery('#datetimepicker').datetimepicker();
             </script>
         </ul>
         </form>
         
+        
+        <table id ="leagueTable">
+            <tr>
+                <th>Date</th>
+                <th>Home Team</th>
+                <th>Away Team</th>
+                <th>Score</th>
+            </tr>
+        </table>
+        <form id= "match_update" hidden=true>
+        <ul class="formStyle">
+            <li><label for="home_goals" >Home Team Goals:</label></li>
+            <li><input id= "home_goals" type="text"/></li>
+            <li><label for="away_goals">Away Team Goals:</label></li>
+            <li><input id = "away_goals" type="text"/></li>
+            <li><button onclick="updateScores()">Update Game</button></li>
+        </ul>
+        </form>
 
+            
         
         
     </body>

@@ -46,7 +46,6 @@ function loadInTeams(id){
                 }
             },
             error:function(xhr, status, error) {
-                alert("teams could not be loaded");
             }
         });
     return leagueNames;

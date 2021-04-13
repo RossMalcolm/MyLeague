@@ -10,9 +10,10 @@ var all_teams = []
             }),
             success:function(result){
                 var data = JSON.parse(result); 
-                sessionStorage.setItem('loggedIn', true);
+                sessionStorage.setItem('loggedIn', true); 
                 sessionStorage.setItem("leagueID", data.league_id);
-                window.location.replace("../html/leaderboard.html");
+                console.log("added", data.league_id);
+                console.log("leagueId set to ", sessionStorage.getItem("leagueID"))
                 window.location.replace("../html/manage.html")
                 
                 },
@@ -35,8 +36,9 @@ var all_teams = []
                 var data = JSON.parse(result);   
                 sessionStorage.setItem('loggedIn', true); 
                 sessionStorage.setItem("leagueID", data.league_id);
+                console.log("added", data.league_id);
+                console.log("leagueId set to ", sessionStorage.getItem("leagueID"))
                 window.location.replace("../html/manage.html");
-                sessionStorage.setItem("teamNames", JSON.stringify(all_teams));
                 },
             error:function(xhr, status, error) {
                 alert("League Already Exists");

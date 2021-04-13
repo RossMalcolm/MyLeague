@@ -75,28 +75,27 @@ function sortTable(n) {
 function logout() {
     sessionStorage.removeItem("loggedIn");
     sessionStorage.removeItem("leagueID");
-    sessionStorage.removeItem("teamNames");
     sessionStorage.removeItem('game_id');
     sessionStorage.removeItem('game_time');
     window.location.replace("../html/index.html");
 }
 
-// function loadInTeams(){
-//     var id = sessionStorage.getItem("leagueID")
-//         var leagueNames = {}
-//         $.ajax({
-//             url: "https://cp465-my-league.herokuapp.com/api/leaderboard?league_id=" + id,  
-//             type: "GET",
-//             success:function(result){
-//                 var data = JSON.parse(result);    
-//                 console.log(data) 
-//                 for (i in data){
-//                     leagueNames[row.team_id]=row.team_name;
-//                     }
-//                 sessionStorage.setItem("teamNames", JSON.stringify(leagueNames));
-//                 },
-//                 error:function(xhr, status, error) {
-                
+// function loadInTeams(id){
+//     var leagueNames = {}
+//     $.ajax({
+//         url: "https://cp465-my-league.herokuapp.com/api/leaderboard?league_id=" + id,  
+//         type: "GET",
+//         success:function(result){
+//             var data = JSON.parse(result);    
+//             console.log(data);
+//             for (i in data){
+//                 row = data[i]
+//                 leagueNames[row.team_id]=row.team_name;
 //                 }
-//             });
+//             },
+//             error:function(xhr, status, error) {
+//                 alert("teams could not be loaded");
+//             }
+//         });
+//     return leagueNames;
 // }

@@ -16,9 +16,9 @@ var id = sessionStorage.getItem("leagueID")
                 };
                 leagueRow.innerHTML+=("<td>"+row.team_name+"</td>");
                 leagueRow.innerHTML+=("<td>"+row.games+"</td>");
-                leagueRow.innerHTML+=("<td>"+row.win_percentage+"</td>");
-                leagueRow.innerHTML+=("<td>"+row.avg_goals_scored_per_game+"</td>");
-                leagueRow.innerHTML+=("<td>"+row.avg_goals_conceded_per_game+"</td>");
+                leagueRow.innerHTML+=("<td>"+row.win_percentage.toString().slice(0,5)+"</td>");
+                leagueRow.innerHTML+=("<td>"+row.avg_goals_scored_per_game.toString().slice(0,6)+"</td>");
+                leagueRow.innerHTML+=("<td>"+row.avg_goals_conceded_per_game.toString().slice(0,6)+"</td>");
                 leagueRow.innerHTML+=("<td>"+row.goals_scored+"</td>");
                 leagueRow.innerHTML+=("<td>"+row.home_goals_scored+"</td>");
                 leagueRow.innerHTML+=("<td>"+row.away_goals_scored+"</td>");

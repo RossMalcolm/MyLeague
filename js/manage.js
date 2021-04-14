@@ -65,54 +65,65 @@ function populateManage(){
     
 
 function insertmatch(){
-    var id = sessionStorage.getItem("leagueID");
-    console.log(document.getElementById("homeTeam"));
-    console.log(document.getElementById("homeTeam").value);
-    console.log(document.getElementById("awayTeam"))
-    console.log(document.getElementById("awayTeam").value)
-    $.ajax({
-        url: "https://cp465-my-league.herokuapp.com/api/createGame",  
-        type: "POST",
-        data:JSON.stringify({
-            "league_id": id,
-            "played": false,
-            "date": document.getElementById("datetimepicker").value,
-            "home_team_id": document.getElementById("homeTeam").value,
-            "away_team_id": document.getElementById("awayTeam").value
-        }),
-        success:function(result){
-            var data = JSON.parse(result);     
-            console.log(data);
-            },
-        error:function(xhr, status, error) {
-            var errorMessage = xhr.status + ': ' + xhr.statusText
-            alert(xhr.responseText);
-            alert('Error - ' + errorMessage);
-            }
-        });
+    if (document.getElementById("homeTeam").value != document.getElementById("awayTeam").value && document.getElementById("datetimepicker").value != ""){
+        var id = sessionStorage.getItem("leagueID");
+        console.log(document.getElementById("homeTeam"));
+        console.log(document.getElementById("homeTeam").value);
+        console.log(document.getElementById("awayTeam"))
+        console.log(document.getElementById("awayTeam").value)
+        $.ajax({
+            url: "https://cp465-my-league.herokuapp.com/api/createGame",  
+            type: "POST",
+            data:JSON.stringify({
+                "league_id": id,
+                "played": false,
+                "date": document.getElementById("datetimepicker").value,
+                "home_team_id": document.getElementById("homeTeam").value,
+                "away_team_id": document.getElementById("awayTeam").value
+            }),
+            success:function(result){
+                var data = JSON.parse(result);     
+                console.log(data);
+                },
+            error:function(xhr, status, error) {
+                var errorMessage = xhr.status + ': ' + xhr.statusText
+                alert(xhr.responseText);
+                alert('Error - ' + errorMessage);
+                }
+            });
+        }else if (document.getElementById("homeTeam").value == document.getElementById("awayTeam").value){
+            alert("A team cannot play itself");
+        }else {
+            alert("a date/time must be selected");
+        }
     }
+    
 
 function updateScores(){
-    $.ajax({
-        url: "https://cp465-my-league.herokuapp.com/api/updateGame",  
-        type: "POST",
-        data:JSON.stringify({
-            "game_id": sessionStorage.getItem("game_id"),
-            "home_goals": document.getElementById("home_goals").value,
-            "away_goals": document.getElementById("away_goals").value,
-            "date": sessionStorage.getItem("game_time"),
-            "OT": document.getElementById("OT").checked
-        }),
-        success:function(result){
-            var data = JSON.parse(result);     
-            console.log(data);
-            },
-        error:function(xhr, status, error) {
-            var errorMessage = xhr.status + ': ' + xhr.statusText
-            alert(xhr.responseText);
-            alert('Error - ' + errorMessage);
-            }
-        });
+    if(document.getElementById("home_goals").value != "" && document.getElementById("away_goals").value != ""){
+        $.ajax({
+            url: "https://cp465-my-league.herokuapp.com/api/updateGame",  
+            type: "POST",
+            data:JSON.stringify({
+                "game_id": sessionStorage.getItem("game_id"),
+                "home_goals": document.getElementById("home_goals").value,
+                "away_goals": document.getElementById("away_goals").value,
+                "date": sessionStorage.getItem("game_time"),
+                "OT": document.getElementById("OT").checked
+            }),
+            success:function(result){
+                var data = JSON.parse(result);     
+                console.log(data);
+                },
+            error:function(xhr, status, error) {
+                var errorMessage = xhr.status + ': ' + xhr.statusText
+                alert(xhr.responseText);
+                alert('Error - ' + errorMessage);
+                }
+            });
+    }else{
+        alert("Scores cannot be empty");
+    }
 }
     
 function loadInTeams(id){
